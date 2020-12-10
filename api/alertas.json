@@ -1,0 +1,22 @@
+    [
+        {
+            "background" : "bg-primary",
+            "fecha" : "12 de enero de 2020",
+            "mensaje" : "Dos días restantes para la solicitud"
+        },
+        {
+            "background" : "bg-success",
+            "fecha" : "20 de enero de 2020",
+            "mensaje" : "La solicitud se ha realizado correctamente "
+        },
+        {
+            "background" : "bg-warning",
+            "fecha" : "31 de enero de 2020",
+            "mensaje" : "No dejes tu lonche fuera del refri"
+        },
+        {
+            "background" : "bg-danger",
+            "fecha" : "12 de enero de 2020",
+            "mensaje" : "Dejaste tu lonche fuera del refri"
+        }
+    ]

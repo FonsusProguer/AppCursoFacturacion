@@ -1,0 +1,26 @@
+[
+    {
+        "nombre" : "Enrique",
+        "fecha" : "12 de Febrero de 2020",
+        "foto" : "img/undraw_profile_1.svg",
+        "mensaje" : "Voy a salir a fumar un cigarro"
+    },
+    {
+        "nombre" : "Guillermo",
+        "fecha" : "21 de Octubre de 2019",
+        "foto" : "img/undraw_profile_2.svg",
+        "mensaje" : "Vamos por unos lonches"
+    },
+    {
+        "nombre" : "Marcos",
+        "fecha" : "15 de Enero de 2020",
+        "foto" : "img/undraw_profile_3.svg",
+        "mensaje" : "Sigo probando la app"
+    },
+    {
+        "nombre" : "Aldo",
+        "fecha" : "18 de Marzo de 2020",
+        "foto" : "https://source.unsplash.com/Mv9hjnEUHR4/60x60",
+        "mensaje" : "Estan buenos los chocolates"
+    }
+]

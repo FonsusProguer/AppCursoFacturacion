@@ -1,0 +1,20 @@
+[
+    {
+        "titulo" : "Inicio",
+        "icono" : "fas fa-fw fa-home",
+        "link" : "",
+        "submenu" :[]
+    },
+    {
+        "titulo" : "Recursos humanos",
+        "icono" : "fas fa-fw fa-user",
+        "link" : "",
+        "submenu" :[
+            {
+                "titulo" : "Clientes",
+                "icono" : "fas fa-fw fa-cog",
+                "link" : ""
+            }
+        ]
+    }
+]
