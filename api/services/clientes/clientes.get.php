@@ -2,7 +2,12 @@
 
 include_once("../../classes/class.Database.php");
 
-$respuesta = Database::get_todo_paginado('clientes');
+$pagina = 1;
+if (isset($_GET['p'])) {
+    $pagina = $_GET['p'];
+}
+
+$respuesta = Database::get_todo_paginado('clientes', $pagina);
 
 echo json_encode($respuesta);
 
