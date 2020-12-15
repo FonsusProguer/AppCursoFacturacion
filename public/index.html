@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="loginApp" ng-controller="mainController">
 
 <head>
 
@@ -16,6 +16,18 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Angular -->
+    <script src="angular/lib/angular.min.js"></script>
+
+    <!-- App -->
+    <script src="angular/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="angular/controllers/mainController.js"></script>
+
+    <!-- Services -->
+    <script src="angular/services/loginService.js"></script>
 
 </head>
 
@@ -39,17 +51,19 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Iniciar sesión</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" name="formLogin" ng-submit="ingresar(datos)">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Ingrese el usuario">
+                                            <input ng-model="datos.usuario" type="email" class="form-control form-control-user"
+                                                aria-describedby="emailHelp"
+                                                name="usuario"
+                                                placeholder="Ingrese el usuario" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Ingrese la contraseña">
+                                            <input ng-model="datos.contrasena" type="password" class="form-control form-control-user"
+                                                name="contrasena"
+                                                placeholder="Ingrese la contraseña" required>
                                         </div>
-                                        <button class="btn btn-primary btn-user btn-block">
+                                        <button ng-disabled="formLogin.$invalid || cargando" class="btn btn-primary btn-user btn-block" type="submit">
                                             Ingresar
                                         </button>
                                     </form>
@@ -59,6 +73,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-xl-10 col-lg-12 col-md-9" ng-show="invalido">
+                <div class="alert alert-danger" role="alert">
+                    {{ mensaje }}
+                  </div>
             </div>
         </div>
 

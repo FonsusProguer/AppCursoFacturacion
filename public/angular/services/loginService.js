@@ -5,14 +5,14 @@ loginService.factory('loginService', ['$http', '$q', ($http, $q)=>
     let self = 
     {
         datos       : {},
-        guardarDatos : (cliente)=>
+        login : (datos)=>
         {
             let q = $q.defer();
 
-            $http.post('api/services/clientes/clientes.guardar.php', cliente)
+            $http.post('public/api/services/login/post.verificar.php', datos)
             .then((response)=>
-            {   
-                self.cargarDatos(self.pag_actual);
+            {
+                console.log(response);   
                 q.resolve();
             })
             .catch((error)=>

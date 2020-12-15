@@ -1,6 +1,7 @@
 let app = angular.module('loginApp', 
 [
-    'loginApp.mainController'
+    'loginApp.mainController',
+    'loginApp.loginService'
 ]);
 
 
