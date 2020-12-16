@@ -10,6 +10,14 @@ app.config(['$routeProvider', ($routeProvider)=>
         templateUrl : 'pages/clientes/clientes.html',
         controller : 'clientesController'
     })
+    .when('/facturas',
+    {
+        templateUrl : 'pages/facturas/facturas.html'
+    })
+    .when('/facturaNueva',
+    {
+        templateUrl : 'pages/facturas/facturaNueva.html'
+    })
     .otherwise({
         redirecTo : '/'
     });
