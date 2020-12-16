@@ -1,15 +1,13 @@
-let loginService = angular.module('loginApp.loginService', []);
+let logoutService = angular.module('facturacionApp.logoutService', []);
 
-loginService.factory('loginService', ['$http', '$q', ($http, $q)=>
+logoutService.factory('logoutService', ['$http', '$q', ($http, $q)=>
 {
-    let self = 
+    let self =
     {
-        datos       : {},
-        login : (datos)=>
+        logout : ()=>
         {
             let q = $q.defer();
-
-            $http.post('api/services/login/post.verificar.php', datos)
+            $http.get("api/services/logout/logout.php")
             .then((response)=>
             {
                 q.resolve(response.data);
@@ -18,10 +16,8 @@ loginService.factory('loginService', ['$http', '$q', ($http, $q)=>
             {
                 q.reject(error);
             });
-
             return q.promise;
         }
     };
-
     return self;
 }]);

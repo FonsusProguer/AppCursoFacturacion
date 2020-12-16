@@ -1,6 +1,6 @@
 let mainController = angular.module('loginApp.mainController', []);
 
-mainController.controller('mainController' , ['$scope', 'loginService', ( $scope, loginService) =>
+mainController.controller('mainController' , ['$scope', 'loginService', '$window', ( $scope, loginService, $window) =>
     {
         $scope.datos = {};
         $scope.invalido = false;
@@ -8,8 +8,6 @@ mainController.controller('mainController' , ['$scope', 'loginService', ( $scope
         $scope.mensaje = "";
         $scope.ingresar = (datos)=>
         {
-            console.log(datos);
-
             if (datos.usuario.length < 3) {
                 $scope.invalido = true;
                 $scope.mensaje = 'Ingrese su usuario';
@@ -25,8 +23,14 @@ mainController.controller('mainController' , ['$scope', 'loginService', ( $scope
 
             loginService.login(datos)
             .then(data=>{
-                $scope.cargando = false;
-
+                if (data.err) {
+                    $scope.cargando = false;
+                    $scope.invalido = true
+                    $scope.mensaje = data.mensaje;
+                }else
+                {
+                    $window.location = data.url;
+                }
             });
         };
     }

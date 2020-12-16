@@ -14,7 +14,8 @@ let app = angular.module('facturacionApp',
     'facturacionApp.messageService',
     'facturacionApp.alertsService',
     'facturacionApp.configuracionService',
-    'facturacionApp.usuarioService'
+    'facturacionApp.usuarioService',
+    'facturacionApp.logoutService'
 ]);
 
 

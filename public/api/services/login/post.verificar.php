@@ -1,12 +1,10 @@
 <?php
 session_start();
-require_once("../clases/class.Database.php");
-
+require_once("../../classes/class.Database.php");
 
 $postdata = file_get_contents("php://input");
 
-$request = json_decode($postdata);
-$request =  (array) $request;
+$request = json_decode($postdata, true);
 
 
 $respuesta = array(
@@ -23,10 +21,10 @@ $respuesta = array(
 
 
 
-if(  isset( $request['usuario'] ) && isset( $request['password'] ) ){ // ACTUALIZAR
+if(  isset( $request['usuario'] ) && isset( $request['contrasena'] ) ){ // ACTUALIZAR
 
 	$user = addslashes( $request['usuario'] );
-	$pass = addslashes( $request['password'] );
+	$pass = addslashes( $request['contrasena'] );
 
 	$user = strtoupper($user);
 
@@ -43,7 +41,7 @@ if(  isset( $request['usuario'] ) && isset( $request['password'] ) ){ // ACTUALI
 
 
 		// Encriptar usando el mismo metodo
-		// $pass = Database::uncrypt( $pass, $data_pass );
+		$pass = Database::uncrypt( $pass, $data_pass );
 
 		// Verificar que sean iguales las contraseñas
 		if( $data_pass == $pass ){

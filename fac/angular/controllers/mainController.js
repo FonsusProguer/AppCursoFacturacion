@@ -3,17 +3,21 @@ let mainController = angular.module('facturacionApp.mainController', []);
 mainController.controller('mainController' , 
 [
     '$scope', 
+    '$window', 
     'alertsService', 
     'usuarioService', 
     'messageService', 
     'menuService', 
+    'logoutService', 
     'configuracionService', 
     (
         $scope,
+        $window,
         alertsService, 
         usuarioService, 
         messageService, 
         menuService, 
+        logoutService, 
         configuracionService) =>
     {
 
@@ -53,6 +57,18 @@ mainController.controller('mainController' ,
         {
             $scope.usuario = usuarioService.datos;
         });
+
+       $scope.cerrarSesion = ()=>
+       {
+            logoutService.logout()
+            .then((data)=> 
+            {
+                console.log(data);
+                $window.location = data.url;
+                if (!data.err) {
+                }
+            });
+       };
 
     }
 ])
