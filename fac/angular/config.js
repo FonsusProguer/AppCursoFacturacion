@@ -12,11 +12,13 @@ app.config(['$routeProvider', ($routeProvider)=>
     })
     .when('/facturas',
     {
-        templateUrl : 'pages/facturas/facturas.html'
+        templateUrl : 'pages/facturas/facturas.html',
+        controller :'facturasController'
     })
     .when('/facturaNueva',
     {
-        templateUrl : 'pages/facturas/facturaNueva.html'
+        templateUrl : 'pages/facturas/facturaNueva.html',
+        controller : 'facturaNuevaController'
     })
     .otherwise({
         redirecTo : '/'

@@ -19,6 +19,9 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Fin scripts template -->
+
+    <link rel="stylesheet" href="plugins/sweetalert/sweetalert.css">
+
     
     
     <!-- Angular -->
@@ -32,12 +35,8 @@
     <!-- Filtros -->
     <script src="angular/filters/quitarLetraFilter.js"></script>
 
-    <!-- Controladores -->
-    <script src="angular/controllers/mainController.js"></script>
-    
-    <!-- Controladores template-->
-    <script src="angular/controllers/clientesController.js"></script>
-
+    <!-- Directivas -->
+    <script src="angular/directives/enterKeyDirective.js"></script>
     <!-- Servicios -->
     <script src="angular/services/configuracionService.js"></script>
     <script src="angular/services/alertsService.js"></script>
@@ -45,9 +44,18 @@
     <script src="angular/services/usuarioService.js"></script>
     <script src="angular/services/menuService.js"></script>
     <script src="angular/services/logoutService.js"></script>
-    
+
     <!-- Servicios template-->
     <script src="angular/services/clientesService.js"></script>
+    <script src="angular/services/facturasService.js"></script>
+    
+    <!-- Controladores -->
+    <script src="angular/controllers/mainController.js"></script>
+    
+    <!-- Controladores template-->
+    <script src="angular/controllers/clientesController.js"></script>
+    <script src="angular/controllers/facturaNuevaController.js"></script>
+    <script src="angular/controllers/facturasController.js"></script>
     
 
 </head>
@@ -159,6 +167,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.js"></script>
 
+    <script src="plugins/sweetalert/sweetalert.min.js"></script>
 </body>
 
 </html>

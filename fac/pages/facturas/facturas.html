@@ -1,40 +1,82 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Facturas</h1>
+    <h1 class="h3 mb-0 text-gray-800"><i class="fa fa-file-invoice  mr-2"></i>Facturas</h1>
     <a href="#!/facturaNueva" class="btn btn-sm btn-success shadow-sm"><i class="fas fa-plus-circle fa-sm text-white-50"></i> Nueva factura</a>
 </div>
 
-<div class="row">   
+
+<div class="row">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-              Buscar factura
+
+        <div class="table-responsive">
+            <div class="card">
+                
+                <div class="card-body">
+                    
+                    <div class="d-flex justify-content-end">
+                        <div>   
+                            <div class="input-group input-group-sm mb-2">
+                                <input type="text" class="bg-light border-0 small" placeholder="Buscar"
+                                aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered  table-striped" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Monto</th>
+                                <th>Fecha</th>
+                                <th>Imprimir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="factura in facturas.listado">
+                                <td>{{ factura.numero_factura}} </td>
+                                <td>{{ factura.cliente_id}} </td>
+                                <td>{{ factura.monto}} </td>
+                                <td>{{ factura.fecha_solicitado}} </td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" >
+                                        <i class="fa fa-print  fa-sm"></i>
+                                    </button>
+                                    <!-- <button class="btn btn-sm btn-info" >
+                                        <i class="fa fa-eye  fa-sm"></i>
+                                    </button> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                          <li class="page-item">
+                            <a class="page-link" ng-click="irAPagina(1)" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+
+                          <li class="page-item" ng-repeat="pagina in facturas.paginas" 
+                            ng-class="{ 'active' : facturas.pag_actual === pagina }">
+                              <a class="page-link" ng-click="irAPagina(pagina)">{{ pagina }}</a>
+                            </li>
+
+                          <li class="page-item">
+                            <a class="page-link" ng-click="irAPagina(facturas.total_paginas)" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                </div>
             </div>
-            <div class="card-body">
-              <h5 class="card-title">Contenido</h5>
+        </div>    
 
-              <table class="table table-striped">
-				<thead>
-					<tr>
-						<td>ID</td>
-						<td>Cliente</td>
-						<td>Monto</td>
-						<td>Fecha</td>
-						<td>Imprimir</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>ID</td>
-						<td>Cliente</td>
-						<td>Monto</td>
-						<td>Fecha</td>
-						<td>Imprimir</td>
-					</tr>
-				</tbody>
-			</table>
-
-
-            </div>
-          </div>
     </div>
 </div>

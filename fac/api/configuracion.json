@@ -1,10 +1,14 @@
 {
-    "version": "1.0.0",
-    "aplicativo" : "facturas",
-    "iniciales" : "AC",
-    "autor" : "Fernando Herrera",
-    "anio" : 2016,
     "logotipo" : "https://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png",
+	"version":"1.0.0",
+	"aplicativo": "facturas",
+	"iniciales":"AC",
+	"autor":"Alfonso Gutiérrez",
+	"anio": 2016,
     "web" : "https://www.algieba.com.mx/",
-    "empresa" : "Algieba"
+    "empresa" : "Algieba",
+	"correo":"fernando.herrera85@gmail.com",
+	"telefono":"(504) 2233-3212",
+	"direccion": "Avenida XYZ, 300mts norte de la calle 123",
+	"ISV": 0.12
 }

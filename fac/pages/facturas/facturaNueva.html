@@ -1,1 +1,152 @@
-<h3>Factura nueva</h3>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800"><i class="fa fa-file  mr-2"></i> Nueva factura</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Buscador cliente -->
+        <div class="card" ng-show="cliente.id === undefined">
+            <div class="card-header">
+                <i class="fa fa-user"></i>
+                Buscar cliente
+            </div>
+            <div class="card-body">
+              <form name="frmBuscar" ng-submit="buscarCliente(buscar)">
+                <div class="input-group input-group-sm mb-2">
+                    <input type="text" class="bg-light border-0 small form-control" ng-model="buscar" placeholder="Buscar por nombre o por ID"
+                    aria-label="Search" aria-describedby="basic-addon2" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+              </form>
+            </div>
+        </div>
+
+          <!-- Primera parte de la factura -->
+          <!-- <div class="card" ng-hide="cliente.id === undefined"> -->
+        <div class="card" ng-hide="cliente.id === undefined">
+            <div class="card-header">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <i class="fa fa-globe"></i> {{ config.aplicativo }} - {{ config.iniciales }}
+                    </div>
+                    <small class="pull-right">Fecha: {{ hoy | date:'dd-MM-yyyy' }}</small>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Cabecera de la factura -->
+                <div class="row">
+                    <div class="col-md-4">
+                        De
+                        <address>
+                            <strong>{{ config.aplicativo }} - {{ config.iniciales }}</strong><br>
+                            {{ config.direccion }}
+                            Teléfono: {{ config.telefono }}<br>
+                            Email: {{ config.correo }}
+                        </address>
+                    </div>
+                    <div class="col-md-4">
+                        Para
+                        <address>
+                            <strong>{{ cliente.nombre }}</strong><br>
+                            {{ cliente.direccion }} <br>
+                        Teléfono: {{ cliente.telefono1  }}<br>
+                        Email: {{ cliente.correo }}
+                    </address>
+                    </div>
+                    <div class="col-sm-4 invoice-col">
+                        <b>Factura ID: [ sin guardar ]</b><br>
+                    </div>
+                    
+                </div>
+                <!-- Fin cabecera de la factura -->
+                
+                <!-- Productos de la factura -->
+                <div class="row">
+                    <div class="col-md-12 table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Producto</th>
+                                    <th>Subtotal</th>
+                                    <th>Cancelar</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr ng-repeat="detalle in factura.detalle">
+                                    <td>{{ detalle.producto_id }}</td>
+                                    <td><input type="number" ng-model="detalle.cantidad" ng-change="actualizar()"></td>
+                                    <td>{{ detalle.precio_venta | currency }}</td>
+                                        <td>{{ detalle.producto }}</td>
+                                        <td>{{ detalle.precio_venta * detalle.cantidad | currency }}</td>
+                                        <td><a class="btn btn-danger" ng-click="borrar_detalle( detalle )"><i class="fa fa-trash fa-sm text-white-50"></i></a></td>
+                                </tr>
+                            
+                                <tr>
+                                    <td><input type="number" enter-key="buscarProducto( agregar )" ng-model="agregar.producto_id"></td>
+                                    <td><input type="number" enter-key="buscarProducto( agregar )" ng-model="agregar.cantidad"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                            
+                        </table>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+                <!-- Fin productos de la factura -->
+                
+                <!-- Detalle de la factura -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <textarea class="form-control" ng-model="factura.comentario" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="lead">Detalle del Pago</p>
+              
+                        <div class="table-responsive">
+                          <table class="table">
+                            <tbody><tr>
+                              <th style="width:50%">Subtotal:</th>
+                              <td>{{ factura.monto | currency }}</td>
+                            </tr>
+                            <tr>
+                              <th>Impuesto (12%)</th>
+                              <td>{{ factura.impuesto | currency }}</td>
+                            </tr>
+                            <tr>
+                              <th>Total:</th>
+                              <td>{{ factura.montoNeto | currency }}</td>
+                            </tr>
+                          </tbody></table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin detalle de la factura -->
+                
+                <!-- Botones de accion de la factura -->
+                <di class="row d-flex justify-content-between">
+                    <button ng-click="cancelarOrden()" class="btn btn-danger pull-left" style="margin-right: 5px;"><i class="fa fa-trash-o"></i> Cancelar pedido</button>
+                <button ng-click="guardarFactura()" class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generar Factura</button>
+                </di>
+                <!-- Fin botones de accion de la factura -->
+
+
+            </div><!-- fin card-body -->
+           
+        </div><!-- fin card --> 
+        
+        
+        
+    </div>
+</div>
+
+<div ng-include="'pages/clientes/modalBuscarCliente.html'"></div>

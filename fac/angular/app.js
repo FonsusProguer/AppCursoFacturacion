@@ -4,18 +4,24 @@ let app = angular.module('facturacionApp',
     
     /*Filtros*/
     'facturacionApp.quitarLetraFilter',
+    
+    /*Directivas*/
+    'facturacionApp.enterKeyDirective',
+
+    /**Servicios*/
+    'facturacionApp.configuracionService',
+    'facturacionApp.menuService',
+    'facturacionApp.messageService',
+    'facturacionApp.alertsService',
+    'facturacionApp.usuarioService',
+    'facturacionApp.logoutService',
+    'facturacionApp.facturasService',
 
     /*Controladores*/
     'facturacionApp.mainController',
     'facturacionApp.clientesController',
-
-    /**Servicios*/
-    'facturacionApp.menuService',
-    'facturacionApp.messageService',
-    'facturacionApp.alertsService',
-    'facturacionApp.configuracionService',
-    'facturacionApp.usuarioService',
-    'facturacionApp.logoutService'
+    'facturacionApp.facturaNuevaController',
+    'facturacionApp.facturasController'
 ]);
 
 

@@ -13,6 +13,27 @@ clientesService.factory('clientesService', ['$http', '$q', ($http, $q)=>
         total_paginas : 1,
         paginas	    : [],
         datos       : {},
+        buscar: (parametro) =>
+        {
+			let q = $q.defer();
+
+			self.cargando = true;
+
+            $http.get('api/services/clientes/clientes.buscar.php?p=' + parametro )
+            .then( response => 
+            {
+                self.cargando = false;
+
+                self.clientes = response.data.clientes;
+                q.resolve();
+
+            }).catch(error => {
+                q.reject();
+            });
+
+			return q.promise;
+
+		},
         cargarDatos : (pagina)=>
         {
             let q = $q.defer();
