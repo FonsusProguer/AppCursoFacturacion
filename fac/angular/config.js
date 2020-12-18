@@ -15,7 +15,7 @@ app.config(['$routeProvider', ($routeProvider)=>
         templateUrl : 'pages/facturas/facturas.html',
         controller :'facturasController'
     })
-    .when('/facturaNueva',
+    .when('/facturaNueva/:facturaId',
     {
         templateUrl : 'pages/facturas/facturaNueva.html',
         controller : 'facturaNuevaController'

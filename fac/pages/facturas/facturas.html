@@ -33,7 +33,7 @@
                                 <th>Cliente</th>
                                 <th>Monto</th>
                                 <th>Fecha</th>
-                                <th>Imprimir</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,12 +43,9 @@
                                 <td>{{ factura.monto}} </td>
                                 <td>{{ factura.fecha_solicitado}} </td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning" >
-                                        <i class="fa fa-print  fa-sm"></i>
-                                    </button>
-                                    <!-- <button class="btn btn-sm btn-info" >
+                                    <a class="btn btn-sm btn-info" href="#!/facturaNueva/{{ factura.numero_factura}}">
                                         <i class="fa fa-eye  fa-sm"></i>
-                                    </button> -->
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>

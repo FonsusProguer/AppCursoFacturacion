@@ -26,7 +26,23 @@ facturasService.factory('facturasService', ['$http', '$q', function($http, $q){
 		clienteId: undefined,
 		comentario: "",
 		detalle: [],
+		cargarFactura : (facturaId)=>
+		{
+			let q = $q.defer();
 
+			$http.get('api/services/facturas/facturas.get.php?p='+facturaId)
+			.then((response)=>
+			{
+				console.log(response);
+				q.resolve(response.data);
+			})
+			.catch((error)=>
+            {
+                q.reject();
+			});
+			
+			return q.promise;
+		},
 		cargarListado : (pagina)=>
         {
             let q = $q.defer();
