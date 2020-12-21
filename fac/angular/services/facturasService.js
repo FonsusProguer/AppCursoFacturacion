@@ -26,14 +26,13 @@ facturasService.factory('facturasService', ['$http', '$q', function($http, $q){
 		clienteId: undefined,
 		comentario: "",
 		detalle: [],
-		cargarFactura : (facturaId)=>
+		obtener : (facturaId)=>
 		{
 			let q = $q.defer();
 
 			$http.get('api/services/facturas/facturas.get.php?p='+facturaId)
 			.then((response)=>
 			{
-				console.log(response);
 				q.resolve(response.data);
 			})
 			.catch((error)=>
@@ -43,6 +42,24 @@ facturasService.factory('facturasService', ['$http', '$q', function($http, $q){
 			
 			return q.promise;
 		},
+		
+		obtenerTotalFacturas : ()=>
+		{
+			let q = $q.defer();
+
+			$http.get('api/services/facturas/facturas.getTotalFacturas.php')
+			.then((response)=>
+			{
+				q.resolve(response.data);
+			})
+			.catch((error)=>
+            {
+                q.reject();
+			});
+			
+			return q.promise;
+		},
+
 		cargarListado : (pagina)=>
         {
             let q = $q.defer();
@@ -94,7 +111,7 @@ facturasService.factory('facturasService', ['$http', '$q', function($http, $q){
 		
         recalcular: ()=>
         {
-			// Calcular los montos
+			// Recalcular los montos
 			self.monto = 0;
 
 			for (item of self.detalle) {

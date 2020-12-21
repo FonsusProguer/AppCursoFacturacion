@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sitema de {{ config.aplicativo }} - Alfonso</title>
+    <title>Sitema de {{ config.aplicativo }}</title>
     <!-- Inicio scripts template -->
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -56,6 +56,7 @@
     <script src="angular/controllers/clientesController.js"></script>
     <script src="angular/controllers/facturaNuevaController.js"></script>
     <script src="angular/controllers/facturasController.js"></script>
+    <script src="angular/controllers/dashboardController.js"></script>
     
 
 </head>
@@ -66,7 +67,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" ng-include="'template/menu.html'">
+        <ul class="d-print-none  navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" ng-include="'template/menu.html'">
             
         </ul>
         <!-- End of Sidebar -->
@@ -78,7 +79,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="d-print-none navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -129,7 +130,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="d-print-none sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; 

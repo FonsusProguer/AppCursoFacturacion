@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-12-2020 a las 00:40:06
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.2.33
+-- Tiempo de generación: 21-12-2020 a las 22:52:08
+-- Versión del servidor: 10.4.16-MariaDB
+-- Versión de PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -243,7 +243,8 @@ INSERT INTO `clientes` (`id`, `nombre`, `correo`, `zip`, `telefono1`, `telefono2
 (198, 'Evan Mccormick', 'arcu.iaculis@Proinnon.co.uk', '39-241', '(710) 172-0193', '(233) 761-7474', 'Tanzania', '295-3912 Tortor. Avenida'),
 (199, 'Emery Howard', 'Ut.semper.pretium@necurnaet.net', '32-395', '(399) 659-0236', '(539) 605-7885', 'Gabon', '4757 Tempus, Carretera'),
 (200, 'Clayton Graves', 'est.ac@liberomauris.org', 'T7J 4W6', '(471) 665-6250', '(463) 536-1780', 'Maldives', 'Apdo.:259-7733 Sed, Avenida'),
-(201, 'Alfonso Gutiérrez', 'fonsuspro@gmail.com', '4732', '123', '(673) 293-0856', 'México', 'Santa Laura 124-C, Zapopan');
+(201, 'Alfonso Gutiérrez', 'fonsuspro@gmail.com', '4732', '123', '(673) 293-0856', 'México', 'Santa Laura 124-C, Zapopan'),
+(202, 'Alondar', 'alondar@gmail.com', '56', '987654321', '123123', 'México', 'Zopa, Colonia Zapopan');
 
 -- --------------------------------------------------------
 
@@ -277,7 +278,9 @@ INSERT INTO `facturas` (`numero_factura`, `fecha_solicitado`, `monto`, `impuesto
 (8, '2020-12-18', '60.00', '0.00', '60.00', 'E', 'Draks', 6),
 (9, '2020-12-18', '20.00', '0.00', '20.00', 'E', 'DRINk', 1),
 (10, '2020-12-18', '80.00', '0.00', '80.00', 'E', '', 1),
-(11, '2020-12-18', '60.00', '0.00', '60.00', 'E', '', 1);
+(11, '2020-12-18', '60.00', '0.00', '60.00', 'E', '', 1),
+(12, '2020-12-21', '65.00', '0.00', '65.00', 'E', 'Seccionar los mejores productos', 10),
+(13, '2020-12-21', '80.00', '0.00', '80.00', 'E', 'Gotis', 5);
 
 -- --------------------------------------------------------
 
@@ -308,7 +311,10 @@ INSERT INTO `facturas_detalle` (`numero_factura`, `producto_id`, `cantidad`, `pr
 (8, '5', 1, '60.00'),
 (9, '8', 1, '20.00'),
 (10, '1', 1, '80.00'),
-(11, '5', 1, '60.00');
+(11, '5', 1, '60.00'),
+(12, '15', 1, '5.00'),
+(12, '5', 1, '60.00'),
+(13, '1', 1, '80.00');
 
 -- --------------------------------------------------------
 
@@ -389,7 +395,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `codigo`, `nombre`, `contrasena`, `ultimoacceso`) VALUES
-(1, 'ALFONSO', 'Alfonso Gutiérrez', '$2a$07$3D971GD4I/J8H9824/1A0.WwoRboQulm3p/dIjd2eSWhFG4b9bHGa', '2020-12-18 17:03:02');
+(1, 'ALFONSO', 'Alfonso Gutiérrez', '$2a$07$3D971GD4I/J8H9824/1A0.WwoRboQulm3p/dIjd2eSWhFG4b9bHGa', '2020-12-21 12:22:24');
 
 --
 -- Índices para tablas volcadas
@@ -427,13 +433,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `numero_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `numero_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`

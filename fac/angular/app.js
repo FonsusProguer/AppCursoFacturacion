@@ -21,7 +21,8 @@ let app = angular.module('facturacionApp',
     'facturacionApp.mainController',
     'facturacionApp.clientesController',
     'facturacionApp.facturaNuevaController',
-    'facturacionApp.facturasController'
+    'facturacionApp.facturasController',
+    'facturacionApp.dashboardController'
 ]);
 
 

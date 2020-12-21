@@ -6,46 +6,50 @@ facturaNuevaController.controller('facturaNuevaController',
     'clientesService', 
     'facturasService', 
     '$location', 
+    '$window', 
     '$routeParams', 
     function(
         $scope, 
         clientesService, 
         facturasService, 
         $location, 
+        $window, 
         $routeParams
         )
     {
-        $scope.facturaId = $routeParams.facturaId;
         $scope.cliente = {};
         $scope.buscar;
-        $scope.accionEditar = false;
+        $scope.accionVer = false;
         $scope.agregar = {
             producto_id: "",
             cantidad:1
         };
-
+        
         $scope.factura = facturasService;
         
         $scope.hoy = new Date();
 
-
-
         $scope.obtenerFactura = (facturaId)=>
         {
-            facturasService.cargarFactura(facturaId)
+            facturasService.obtener(facturaId)
             .then((response)=>
             {
                 $scope.cliente = response.cliente;   
                 facturasService.detalle = response.detalle;
+                $scope.factura.comentario = response.factura.comentario;
                 facturasService.recalcular();                             
             });
         };
         
-        if ($scope.facturaId != 0) 
+        if ($routeParams.facturaId != 0) 
         {
-            $scope.accionEditar = true;
+            $scope.accionVer = true;
+            $scope.facturaId = $routeParams.facturaId;
+            
+            $scope.obtenerFactura($scope.facturaId);
+        }else{
+            $scope.accionVer = false;
         }
-        $scope.obtenerFactura($scope.facturaId);
 
 
 
@@ -56,6 +60,7 @@ facturaNuevaController.controller('facturaNuevaController',
             clientesService.buscar(buscar)
             .then(()=>
             {
+                $scope.limpiarDatosFactura();
                 if( isNaN( buscar ) ){
                     $("#modal_buscar_cliente").modal();
                     $scope.clientes = clientesService.clientes;
@@ -117,13 +122,23 @@ facturaNuevaController.controller('facturaNuevaController',
             .then((response)=>
             {
                 if (!response.err) {
+                    $scope.facturaId = response.facturaid;
                     $scope.cliente = {};
-                    facturasService.limpiarDatosFactura();
+                    $scope.buscar = "";
+                    $scope.limpiarDatosFactura();
                     $location.path(response.url);
                 }else{
                     swal("Aviso", 'Ocurrió un error al cargar los datos', "info")
                 }
             });
+        }
+
+        $scope.limpiarDatosFactura = ()=>{
+            $scope.accionVer = false;
+            $scope.cliente = {};
+            $scope.buscar = "";
+            facturasService.limpiarDatosFactura();
+            facturasService.recalcular();
         }
 
         $scope.borrarDetalle = item => 
@@ -132,6 +147,11 @@ facturaNuevaController.controller('facturaNuevaController',
             facturasService.borrarDetalle( item );
 
         }
+
+        $scope.imprimir = ()=>
+        {
+            $window.print();
+        };
 
         $scope.cancelarOrden = ()=>
         {
@@ -152,8 +172,7 @@ facturaNuevaController.controller('facturaNuevaController',
                 {   
 
                     if (isConfirm) 
-                    {     
-                        $scope.cliente = {};
+                    {   $scope.limpiarDatosFactura();
                         facturasService.nuevaFactura();
                         $scope.$apply();
                     }

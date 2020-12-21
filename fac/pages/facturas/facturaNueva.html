@@ -1,6 +1,16 @@
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><i class="fa fa-file  mr-2"></i> Nueva factura</h1>
+<div class="d-print-none  d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800"><i class="fa fa-file-invoice  mr-2"></i>Facturas</h1>
+    
+    <div>
+        <a href="#!/facturas" ng-show="cliente.id === undefined || accionVer" class="btn btn-sm btn-success shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i> Regresar</a>
+        <!-- Botones de accion de la factura -->
+        <button ng-show="accionVer" ng-click="imprimir()" class="btn btn-sm btn-info shadow-sm" style="margin-right: 5px;"><i class="fa fa-print"></i> Imprimir</button>
+        <button ng-hide="accionVer || cliente.id === undefined" ng-click="cancelarOrden()" class="btn btn-sm btn-danger shadow-sm" style="margin-right: 5px;"><i class="fa fa-trash-o"></i> Cancelar pedido</button>
+        <button ng-hide="accionVer || cliente.id === undefined" ng-click="guardarFactura()" class="btn btn-sm btn-primary shadow-sm" style="margin-right: 5px;"><i class="fa fa-download"></i> Generar Factura</button>
+        <!-- Fin botones de accion de la factura -->
+    </div>
 </div>
+
 
 <div class="row">
     <div class="col-md-12">
@@ -58,7 +68,7 @@
                     </address>
                     </div>
                     <div class="col-sm-4 invoice-col">
-                        <b>Factura ID: [ sin guardar ]</b><br>
+                        <b>Factura ID: {{ facturaId }}</b><br>
                     </div>
                     
                 </div>
@@ -75,27 +85,27 @@
                                     <th>Precio</th>
                                     <th>Producto</th>
                                     <th>Subtotal</th>
-                                    <th ng-hide="accionEditar">Cancelar</th>
+                                    <th ng-hide="accionVer">Cancelar</th>
                                 </tr>
                             </thead>
                         
                             <tbody>
                                 <tr ng-repeat="detalle in factura.detalle">
                                     <td>{{ detalle.producto_id }}</td>
-                                    <td ng-disabled="accionEditar"><input type="number" ng-model="detalle.cantidad" ng-change="actualizar()"></td>
+                                    <td ng-disabled="accionVer"><input type="number" class="form-control" ng-model="detalle.cantidad" ng-change="actualizar()"></td>
                                     <td>{{ detalle.precio_venta | currency }}</td>
-                                        <td>{{ detalle.producto }}</td>
-                                        <td>{{ detalle.precio_venta * detalle.cantidad | currency }}</td>
-                                        <td ng-hide="accionEditar"><a class="btn btn-danger" ng-click="borrar_detalle( detalle )"><i class="fa fa-trash fa-sm text-white-50"></i></a></td>
+                                    <td>{{ detalle.producto }}</td>
+                                    <td>{{ detalle.precio_venta * detalle.cantidad | currency }}</td>
+                                    <td ng-hide="accionVer"><a class="btn btn-danger" ng-click="borrarDetalle( detalle )"><i class="fa fa-trash fa-sm text-white-50"></i></a></td>
                                 </tr>
                             
                                 <tr>
-                                    <td><input type="number" enter-key="buscarProducto( agregar )" ng-model="agregar.producto_id"></td>
-                                    <td><input type="number" enter-key="buscarProducto( agregar )" ng-model="agregar.cantidad"></td>
+                                    <td><input type="number" class="form-control" enter-key="buscarProducto( agregar )" ng-model="agregar.producto_id"></td>
+                                    <td><input type="number" class="form-control" enter-key="buscarProducto( agregar )" ng-model="agregar.cantidad"></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td ng-hide="accionEditar"></td>
+                                    <td ng-hide="accionVer"></td>
                                 </tr>
                             </tbody>
                             
@@ -107,7 +117,7 @@
                 <!-- Detalle de la factura -->
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <textarea ng-disabled="accionEditar" class="form-control" ng-model="factura.comentario" cols="30" rows="10"></textarea>
+                        <textarea  class="form-control" ng-model="factura.comentario" cols="30" rows="10"></textarea>
                     </div>
                     <div class="col-md-6">
                         <p class="lead">Detalle del Pago</p>
@@ -132,12 +142,7 @@
                 </div>
                 <!-- Fin detalle de la factura -->
                 
-                <!-- Botones de accion de la factura -->
-                <di class="row d-flex justify-content-between" ng-hide="accionEditar">
-                    <button ng-click="cancelarOrden()" class="btn btn-danger pull-left" style="margin-right: 5px;"><i class="fa fa-trash-o"></i> Cancelar pedido</button>
-                    <button ng-click="guardarFactura()" class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generar Factura</button>
-                </di>
-                <!-- Fin botones de accion de la factura -->
+               
 
 
             </div><!-- fin card-body -->

@@ -3,7 +3,8 @@ app.config(['$routeProvider', ($routeProvider)=>
     $routeProvider
     .when('/',
     {
-        templateUrl : 'pages/dashboard/dashboard.html'
+        templateUrl : 'pages/dashboard/dashboard.html',
+        controller : 'dashboardController'
     })
     .when('/clientes',
     {
