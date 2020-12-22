@@ -1,6 +1,4 @@
-let facturasController = angular.module('facturacionApp.facturasController', []);
-
-facturasController.controller('facturasController', ['$scope', 'facturasService', function($scope, facturasService) {
+app.controller('facturasController', ['$scope', 'facturasService', function($scope, facturasService) {
     
     $scope.facturas={};
     $scope.irAPagina = pagina=>

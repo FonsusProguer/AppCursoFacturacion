@@ -1,6 +1,4 @@
-let facturaNuevaController = angular.module('facturacionApp.facturaNuevaController', []);
-
-facturaNuevaController.controller('facturaNuevaController', 
+app.controller('facturaNuevaController', 
 [
     '$scope', 
     'clientesService', 
@@ -8,6 +6,7 @@ facturaNuevaController.controller('facturaNuevaController',
     '$location', 
     '$window', 
     '$routeParams', 
+    
     function(
         $scope, 
         clientesService, 

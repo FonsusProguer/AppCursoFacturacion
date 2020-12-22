@@ -1,6 +1,4 @@
-let clientesController = angular.module('facturacionApp.clientesController', ['facturacionApp.getClientesService']);
-
-clientesController.controller('clientesController', ['$scope', 'clientesService', function($scope, clientesService)
+app.controller('clientesController', ['$scope', 'clientesService', function($scope, clientesService)
 {
     $scope.clientes = {};
     $scope.clienteSeleccionado = {};

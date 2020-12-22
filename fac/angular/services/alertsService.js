@@ -1,6 +1,4 @@
-let alertsService = angular.module('facturacionApp.alertsService', []);
-
-alertsService.factory('alertsService', ['$http', '$q', ($http, $q)=>
+app.factory('alertsService', ['$http', '$q', ($http, $q)=>
 {
     let self =
     {

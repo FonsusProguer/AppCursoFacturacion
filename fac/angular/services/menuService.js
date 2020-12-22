@@ -1,6 +1,4 @@
-let menuService = angular.module('facturacionApp.menuService', []);
-
-menuService.factory('menuService', ['$http', '$q', ($http, $q)=>
+app.factory('menuService', ['$http', '$q', ($http, $q)=>
 {
     let self =
     {

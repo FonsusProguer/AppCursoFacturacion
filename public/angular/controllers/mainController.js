@@ -1,6 +1,4 @@
-let mainController = angular.module('loginApp.mainController', []);
-
-mainController.controller('mainController' , ['$scope', 'loginService', '$window', ( $scope, loginService, $window) =>
+app.controller('mainController' , ['$scope', 'loginService', '$window', ( $scope, loginService, $window) =>
     {
         $scope.datos = {};
         $scope.invalido = false;

@@ -1,6 +1,4 @@
-let logoutService = angular.module('facturacionApp.logoutService', []);
-
-logoutService.factory('logoutService', ['$http', '$q', ($http, $q)=>
+app.factory('logoutService', ['$http', '$q', ($http, $q)=>
 {
     let self =
     {

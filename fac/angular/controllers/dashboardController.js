@@ -1,6 +1,4 @@
-let dashboardController = angular.module('facturacionApp.dashboardController', []);
-
-dashboardController.controller('dashboardController', ['$scope', 'facturasService', function($scope, facturasService) {
+app.controller('dashboardController', ['$scope', 'facturasService', function($scope, facturasService) {
     
     $scope.totalFacturas;
 

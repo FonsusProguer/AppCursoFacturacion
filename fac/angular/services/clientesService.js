@@ -1,6 +1,4 @@
-let clientesService = angular.module('facturacionApp.getClientesService', []);
-
-clientesService.factory('clientesService', ['$http', '$q', ($http, $q)=>
+app.factory('clientesService', ['$http', '$q', ($http, $q)=>
 {
     let self = 
     {

@@ -1,6 +1,4 @@
-let quitarLetraFilter = angular.module('facturacionApp.quitarLetraFilter', []);
-
-quitarLetraFilter.filter('quitarLetraFilter', ()=>
+app.filter('quitarLetraFilter', ()=>
 {
     return palabra =>
     {

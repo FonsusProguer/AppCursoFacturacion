@@ -1,6 +1,4 @@
-let enterKeyDirective = angular.module('facturacionApp.enterKeyDirective', []);
-
-enterKeyDirective.directive('enterKey', function () {
+app.directive('enterKey', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if(event.which === 13) {

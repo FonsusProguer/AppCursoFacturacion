@@ -1,6 +1,4 @@
-let configuracionService = angular.module('facturacionApp.configuracionService', []);
-
-configuracionService.factory('configuracionService', [ '$http', '$q', ($http, $q)=>
+app.factory('configuracionService', [ '$http', '$q', ($http, $q)=>
 {
     let self = {
         config : {},

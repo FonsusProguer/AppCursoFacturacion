@@ -1,6 +1,4 @@
-let loginService = angular.module('loginApp.loginService', []);
-
-loginService.factory('loginService', ['$http', '$q', ($http, $q)=>
+app.factory('loginService', ['$http', '$q', ($http, $q)=>
 {
     let self = 
     {

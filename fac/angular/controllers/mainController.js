@@ -1,6 +1,4 @@
-let mainController = angular.module('facturacionApp.mainController', []);
-
-mainController.controller('mainController' , 
+app.controller('mainController' , 
 [
     '$scope', 
     '$window', 

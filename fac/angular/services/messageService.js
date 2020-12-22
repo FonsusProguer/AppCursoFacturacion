@@ -1,6 +1,4 @@
-let messageService = angular.module('facturacionApp.messageService', []);
-
-messageService.factory('messageService', ['$http', '$q', ($http, $q)=>
+app.factory('messageService', ['$http', '$q', ($http, $q)=>
 {
     let self = 
     {

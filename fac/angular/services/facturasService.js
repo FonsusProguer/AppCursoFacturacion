@@ -1,7 +1,4 @@
-let facturasService = angular.module('facturacionApp.facturasService',[]);
-
-
-facturasService.factory('facturasService', ['$http', '$q', function($http, $q){
+app.factory('facturasService', ['$http', '$q', function($http, $q){
 
 	let self = {
 
